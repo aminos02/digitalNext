@@ -2,7 +2,10 @@
   "name": "digital_next",
   "version": "0.0.1",
   "private": true,
-  "author": {"name": "azzouz Mohammed el amin","email": "azzouzamine02@gmail.com"},
+  "author": {
+    "name": "azzouz Mohammed el amin",
+    "email": "azzouzamine02@gmail.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
