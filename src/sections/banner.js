@@ -6,7 +6,25 @@ import ShapeRight from 'assets/shape-right.png';
 
 export default function Banner() {
   return (
-    <h1>Banner</h1>
+    <Box as={'section'} sx={styles.banner} id="home">
+    <Container sx={styles.banner.container}>
+      <Box sx={styles.banner.contentBox}>
+        <Heading as="h1" variant="heroPrimary">
+          Top Quality Digital Products To Explore
+        </Heading>
+        <Text as="p" variant="heroSecondary">
+          Get your blood tests delivered at let home collect sample from the
+          victory of the managements that supplies best design system
+          guidelines ever.
+        </Text>
+        <Button variant="primary">Explore</Button>
+      </Box>
+
+      <Box sx={styles.banner.imageBox}>
+        <Image src={BannerImg} alt="banner" />
+      </Box>
+    </Container>
+  </Box>
   );
 }
 
