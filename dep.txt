@@ -1,0 +1,5 @@
+browserslist caniuse-lite dotenv framer-motion globby isomorphic-unfetch next next-compose-plugins next-optimized-images prettier rc-drawer react react-custom-scrollbars react-dom react-ga react-icons react-modal-video react-multi-carousel react-scroll react-stickynode theme-ui typeface-dm-sans 
+
+"devDependencies": {
+    "imagemin-mozjpeg imagemin-optipng imagemin-svgo next-sitemap
+  }
