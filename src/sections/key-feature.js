@@ -1,4 +1,4 @@
-import { jsx } from 'theme-ui';
+import { Box, jsx } from 'theme-ui';
 import { Container, Grid } from 'theme-ui';
 import SectionHeader from '../components/section-header';
 import FeatureCardColumn from 'components/feature-card-column.js';
@@ -44,7 +44,26 @@ const data = [
 
 export default function KeyFeature() {
   return (
-   <h1>Key Feature</h1>
+    <Box as={'section'} sx={{ variant: 'section.keyFeature' }} id="feature">
+      <Container>
+        <SectionHeader
+          slogan="Whats the function"
+          title="Meet the feature of product"
+        />
+
+        <Grid sx={styles.grid}>
+          {data.map((item) => (
+            <FeatureCardColumn
+              key={item.id}
+              src={item.imgSrc}
+              alt={item.altText}
+              title={item.title}
+              text={item.text}
+            />
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 }
 
