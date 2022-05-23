@@ -43,8 +43,6 @@ const data = {
 
 
 export default function ServiceSection() {
-  // const [modal, setModal] = useState(false);
-  // const [videoLoading, setVideoLoading] = useState(true);
   const [toggle,setIsToggle]=useState(false)
 
  
