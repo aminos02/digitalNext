@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import { jsx, Container, Box, Grid, Text, Heading, Button, Image } from 'theme-ui';
+import {  Container, Box, Grid, Text, Heading, Button, Image } from 'theme-ui';
 import { keyframes } from '@emotion/react';
 import TextFeature from 'components/text-feature';
-import ModalVideo from 'react-modal-video';
 import { IoIosPlay } from 'react-icons/io';
-
 import ServiceThumb from 'assets/service-thumb.png';
 import shapePattern from 'assets/shape-pattern1.png';
-
 import Smart from 'assets/services/smart.svg';
 import Secure from 'assets/services/secure.svg';
+import Style from './../style/service.module.css'
+import YouTube from 'react-youtube';
+import { FaRegTimesCircle } from "react-icons/fa";
+const opts = {
+  height: '390',
+  width:'100%',
+  playerVars: {
+    autoplay: 1,
+  },
+};
 
 const data = {
   subTitle: 'our services',
@@ -34,9 +41,72 @@ const data = {
   ],
 };
 
+
 export default function ServiceSection() {
+  // const [modal, setModal] = useState(false);
+  // const [videoLoading, setVideoLoading] = useState(true);
+  const [toggle,setIsToggle]=useState(false)
+
+ 
   return (
-    <h1>Service Section</h1>
+    <Box as={'section'} sx={{ variant: 'section.services' }}>
+      <Container sx={styles.containerBox}>
+        <Box sx={styles.thumbnail}>
+          <Image src={ServiceThumb} alt="Thumbnail" />
+          <Button
+            sx={styles.videoBtn}
+            onClick={()=>{setIsToggle(true)}}
+            aria-label="Play Button"
+          >
+            <span>
+              <IoIosPlay />
+            </span>
+          </Button>
+
+          <Box sx={styles.shapeBox}>
+            <Image src={shapePattern} alt="Shape" />
+          </Box>
+        </Box>
+        <Box sx={styles.contentBox}>
+          <TextFeature subTitle={data.subTitle} title={data.title} />
+
+          <Grid sx={styles.grid}>
+            {data.features.map((item) => (
+              <Box sx={styles.card} key={item.id}>
+                <Image src={item.imgSrc} alt={item.altText} sx={styles.icon} />
+
+                <Box sx={styles.wrapper}>
+                  <Heading sx={styles.wrapper.title}>{item.title}</Heading>
+                  <Text sx={styles.wrapper.subTitle}>{item.text}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Grid>
+        </Box>
+      </Container>
+      <div>
+
+      <div id="myModal" className={Style.modal} onClick={(event)=>{
+        if(event.target.id=="myModal")
+        setIsToggle(false)
+
+      }} style={toggle?{display:'block'}:{display:'none'}}>
+        <div className={Style.modal_content} >
+        <FaRegTimesCircle style={{width:'40px',height:'40px',float:'right',marginBottom:'5px',color:'red',cursor:'pointer'}} onClick={()=>{
+          setIsToggle(false)
+        }}/>
+          {toggle &&(
+           <YouTube 
+           videoId="9y927xiDtJo" opts={opts} 
+           style={{width:'100%'}}
+            />
+            ) 
+        }
+
+        </div>
+      </div>
+    </div>
+    </Box>
   );
 }
 
@@ -53,10 +123,6 @@ const playPluse = keyframes`
 `;
 
 const styles = {
-  coreFeature: {
-    py: [0, null, null, 2, null, 7],
-    position: 'relative',
-  },
   containerBox: {
     display: 'flex',
     alignItems: ['flex-start', null, null, 'center'],
@@ -170,23 +236,6 @@ const styles = {
       fontSize: [1, null, null, '14px', 1],
       fontWeight: 400,
       lineHeight: 1.9,
-    },
-  },
-  videoWrapper: {
-    maxWidth: '100%',
-    position: 'relative',
-    width: '900px',
-    '&:before': {
-      content: '""',
-      display: 'block',
-      paddingTop: '56.25%',
-    },
-    iframe: {
-      width: '100%',
-      height: '100%',
-      position: 'absolute',
-      top: 0,
-      left: 0,
     },
   },
 };

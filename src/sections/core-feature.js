@@ -1,7 +1,6 @@
-import { jsx, Container, Box, Image } from 'theme-ui';
+import { Container, Box, Image } from 'theme-ui';
 import TextFeature from 'components/text-feature';
 
-import FeatureThumb from 'assets/teboune.jpg';
 import shapePattern from 'assets/shape-pattern2.png';
 
 const data = {
@@ -15,7 +14,7 @@ const data = {
 
 export default function CoreFeature() {
   return (
-   <section sx={{variant: 'section.coreFeature'}}>
+   <Box as={'section'} sx={{variant: 'section.coreFeature'}}>
     <Container sx={styles.containerBox}>
       <Box sx={styles.contentBox}>
         <TextFeature 
@@ -33,7 +32,7 @@ export default function CoreFeature() {
         </Box>
       </Box>
     </Container>
-   </section>
+   </Box>
   );
 }
 
