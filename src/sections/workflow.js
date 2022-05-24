@@ -35,7 +35,27 @@ const data = [
 
 export default function WorkFlow() {
   return (
-    <h1>Workflow</h1>
+    <Box as={'section'} sx={styles.workflow}>
+    <Container>
+      <SectionHeader
+        slogan="Whats the function"
+        title="Let’s see how it works"
+        isWhite={true}
+      />
+
+      <Grid sx={styles.grid}>
+        {data.map((item) => (
+          <Box sx={styles.card} key={item.id}>
+            <Box sx={styles.iconBox}>{`0${item.id}`}</Box>
+            <Box sx={styles.wrapper}>
+              <Heading sx={styles.wrapper.title}>{item.title}</Heading>
+              <Text sx={styles.wrapper.subTitle}>{item.text}</Text>
+            </Box>
+          </Box>
+        ))}
+      </Grid>
+    </Container>
+  </Box>
   );
 }
 

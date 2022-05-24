@@ -2,7 +2,7 @@ import { jsx, Container, Flex, Button, Box } from 'theme-ui';
 import { keyframes } from '@emotion/react';
 import { Link } from 'react-scroll';
 import Logo from 'components/logo';
-import LogoDark from 'assets/logo.svg';
+import LogoDark from 'assets/logo.png';
 import MobileDrawer from './mobile-drawer';
 import menuItems from './header.data';
 

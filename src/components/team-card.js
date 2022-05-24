@@ -3,7 +3,24 @@ import { Text, Heading, Image, Box, Link } from 'theme-ui';
 
 export default function TeamCard({ src, altText, title, designation, social }) {
   return (
-    <h1>TeamCard</h1>
+    <Box sx={styles.card}>
+    <Image src={src} alt={altText} sx={styles.memberThumb} />
+    <Box sx={styles.infoWrapper}>
+      <Heading className="info__name" sx={styles.infoWrapper.name}>
+        {title}
+      </Heading>
+      <Text className="info__designation" sx={styles.infoWrapper.designation}>
+        {designation}
+      </Text>
+    </Box>
+    <Box sx={styles.socialShare} className="social__share">
+      {social.map((item) => (
+        <Link key={item.id} href={item.path} className={item.name}>
+          {item.icon}
+        </Link>
+      ))}
+    </Box>
+  </Box>
   );
 }
 
@@ -36,6 +53,7 @@ const styles = {
   },
 
   memberThumb: {
+    objectFit:'contain',
     width: ['70px', '80px', '100px', null, null, '130px'],
     height: ['70px', '80px', '100px', null, null, '130px'],
     flexShrink: 0,

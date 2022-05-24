@@ -240,7 +240,26 @@ const responsive = {
 
 export default function Package() {
   const { monthly, annual } = packages;
+  const [state, setState] = useState({
+    active: 'monthly',
+    pricingPlan: monthly,
+  });
 
+  const handlePricingPlan = (plan) => {
+    if (plan === 'annual') {
+      setState({
+        ...state,
+        active: 'annual',
+        pricingPlan: annual,
+      });
+    } else {
+      setState({
+        ...state,
+        active: 'monthly',
+        pricingPlan: monthly,
+      });
+    }
+  };
   const sliderParams = {
     additionalTransfrom: 0,
     arrows: false,
@@ -265,7 +284,46 @@ export default function Package() {
   };
 
   return (
-    <h1>Package</h1>
+    <Box as={'section'} id="pricing" sx={{ variant: 'section.pricing' }}>
+      <Container>
+        <SectionHeader
+          slogan="Pricing Plan"
+          title="Choose your pricing policy"
+        />
+        <Flex sx={styles.buttonGroup}>
+          <Box sx={styles.buttonGroupInner}>
+            <button
+              className={state.active === 'monthly' ? 'active' : ''}
+              type="button"
+              aria-label="Monthly"
+              onClick={() => handlePricingPlan('monthly')}
+            >
+              Monthly Plan
+            </button>
+            <button
+              className={state.active === 'annual' ? 'active' : ''}
+              type="button"
+              aria-label="Annual"
+              onClick={() => handlePricingPlan('annual')}
+            >
+              Annual Plan
+            </button>
+          </Box>
+        </Flex>
+        <Box sx={styles.pricingWrapper} className="pricing__wrapper">
+          <Carousel {...sliderParams}>
+            {state.pricingPlan.map((packageData) => (
+              <Box
+                sx={styles.pricingItem}
+                key={`${state.active}-card--key${packageData.id}`}
+              >
+                <PriceCard data={packageData} />
+              </Box>
+            ))}
+          </Carousel>
+        </Box>
+      </Container>
+    </Box>
   );
 }
 
