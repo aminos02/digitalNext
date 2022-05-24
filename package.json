@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build ",
     "postbuild": "next-sitemap"
   },
   "dependencies": {
@@ -40,9 +40,9 @@
     "typeface-dm-sans": "^1.1.13"
   },
   "devDependencies": {
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-optipng": "^8.0.0",
-    "imagemin-svgo": "^10.0.1",
+    "imagemin-mozjpeg": "9.0.0",
+    "imagemin-optipng": "8.0.0",
+    "imagemin-svgo": "9.0.0",
     "next-sitemap": "^2.5.21"
   }
 }
